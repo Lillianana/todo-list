@@ -1,14 +1,13 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Checkbox-group>
+      <Checkbox v-for="item in list" :key="item.id" :label="item.detail"></Checkbox>
+    </Checkbox-group>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   name: 'Home',
@@ -18,12 +17,11 @@ export default {
     }
   },
   components: {
-    HelloWorld
+
   },
-  created: async () => {
-    const data = await axios.get('http://localhost:3000/');
-    this.list = data;
-    console.log(data);
+  created: async function () {
+    const res = await axios.get('http://localhost:3000/');
+    this.list = res.data;
   }
 }
 </script>
