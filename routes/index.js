@@ -1,16 +1,13 @@
 const router = require('koa-router')()
 const controller = require('../controller/list')
 
-router.get('/', controller.getTodoList)
+router.get('/query', controller.getTodoList)
 
-// router.get('/string', async (ctx, next) => {
-//   ctx.body = 'koa2 string'
-// })
-//
-// router.get('/json', async (ctx, next) => {
-//   ctx.body = {
-//     title: 'koa2 json'
-//   }
-// })
+router.post('/add', controller.addTodoList)
+
+router.post('/delete', controller.deleteTodoList)
+
+router.post('/update', controller.updateTodoList)
+
 
 module.exports = router
